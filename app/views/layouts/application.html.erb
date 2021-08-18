@@ -11,6 +11,11 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="<%= import_sales_path %>">Datos importados</a>
+    </nav>
+
+    <%= render "layouts/flash_messages" %>
     <%= yield %>
   </body>
 </html>
