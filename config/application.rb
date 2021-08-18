@@ -9,6 +9,7 @@ Bundler.require(*Rails.groups)
 module ImportApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    config.paths.add 'lib', eager_load: true
     config.load_defaults 6.1
 
     # Configuration for the application, engines, and railties goes here.

@@ -1,0 +1,29 @@
+<%= form_for @import_sale, local: true do |f| %>
+  <div class="form">
+    <div class="col-md-12">
+      <% if @import_sale.errors.full_messages.size > 0 %>
+        <div class="alert alert-danger" role="alert">
+          <h3> Error al importar datos </h3>
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <ul>
+            <% @import_sale.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>
+        <% end %>
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <%= f.label :file, "Archivo", class: "control-label" %>
+          <%= f.file_field :file, class: "form-control"%>
+        </div>
+      </div>
+      <div class="col-md-12 text-right">
+        <%= link_to "Regresar", import_sales_path, class:"btn btn-danger" %>
+        <%= f.button "Importar", type: :submit, class: 'btn btn-primary'%>
+      </div>
+    </div>
+  </div>
+<% end %>

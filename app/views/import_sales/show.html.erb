@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <div class="card-body card-padding">
+      <div class="row">
+        <div class="col-md-4">
+          <h6 class="text-right">Fecha de importación: <%= @import_sale.created_at.strftime("%d/%m/%Y") %></h6>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h5 class="text-center">Productos</h5>
+          <table class="table table-hover table-sm">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Comprador</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Direccion del vendedor</th>
+                <th scope="col">Vendedor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @import_sale.sales.each do |sale| %>
+                <tr>
+                  <td><%= sale.buyer %></td>
+                  <td><%= sale.product.description %></td>
+                  <td><%= number_to_currency(sale.product.price) %></td>
+                  <td><%= sale.quantity %></td>
+                  <td><%= sale.seller.address %></td>
+                  <td><%= sale.seller.name %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-12 text-right">
+          <%= link_to "Atras", import_sales_path , class: "btn btn-danger"%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
